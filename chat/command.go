@@ -7,6 +7,7 @@ const (
 	CMD_JOIN
 	CMD_ROOMS
 	CMD_MSG
+	CMD_HELP
 	CMD_QUIT
 )
 

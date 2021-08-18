@@ -30,21 +30,22 @@ func (s *server) run() {
 			s.listRooms(cmd.client)
 		case CMD_MSG:
 			s.msg(cmd.client, cmd.args)
+		case CMD_HELP:
+			s.help(cmd.client)
 		case CMD_QUIT:
 			s.quit(cmd.client)
-		}
+}
 	}
 }
 
 func (s *server) newClient(conn net.Conn) {
 	log.Printf("new client has joined: %s", conn.RemoteAddr().String())
-
-	c := &client{
+	c := client{
 		conn:     conn,
 		nick:     "anonymous",
 		commands: s.commands,
 	}
-
+	c.msg(fmt.Sprintf("type '/help' to see the list of commands."))
 	c.readInput()
 }
 
@@ -91,8 +92,12 @@ func (s *server) quit(c *client) {
 
 	s.quitCurrentRoom(c)
 
-	c.msg("sad to see you go =(")
+	c.msg("sad to see you go :(")
 	c.conn.Close()
+}
+
+func (s *server) help(c *client){
+	c.msg("the commands that can be used are: '/join', '/rooms', '/nick', '/msg' and '/quit'.")
 }
 
 func (s *server) quitCurrentRoom(c *client) {
