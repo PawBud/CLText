@@ -93,7 +93,10 @@ func (s *server) quit(c *client) {
 	s.quitCurrentRoom(c)
 
 	c.msg("sad to see you go :(")
-	c.conn.Close()
+	err := c.conn.Close()
+	if err != nil {
+		return 
+	}
 }
 
 func (s *server) help(c *client){
