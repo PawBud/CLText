@@ -13,12 +13,8 @@ The whole application is built upon:-
 - TCP server itself to accept network connections
 
 # Commands
-Currently the Chat supports the following commands:-
-- `/nick <name>` - get a name, otherwise user will stay anonymous.
-- `/join <name>` - join a room, if room doesn't exist, the new room will be created. User can be only in one room at the same time.
-- `/rooms` - show list of available rooms to join.
-- `/msg	<msg>` - broadcast message to everyone in a room.
-- `/quit` - disconnects from the chat serer.
+
+Kindly refer to the [Wiki](https://github.com/PawBud/CLText/wiki)
 
 # Install & Run
 **These Instructions are for Linux Ubuntu**
