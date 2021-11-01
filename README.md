@@ -23,6 +23,11 @@ Kindly refer to the [Wiki](https://github.com/PawBud/CLText/wiki)
 3. run `go build .` which builds an executable in the chat directory itself
 4. run `./chat` which runs the exectuable. Now the server should start
 
+**These Instructions are for MacOS**
+1. Install [homebrew](https://brew.sh/).
+2. run `brew install telnet`.
+3. The remaining steps are same to that of Ubuntu which are aforementioned.
+
 ![CLText](images/Server_Start.png)
 
 ## Commands in Use
