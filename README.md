@@ -1,6 +1,6 @@
 ![Made With Go Badge](https://img.shields.io/badge/Made%20with-Go-informational?style=for-the-badge&logo=go)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&logo=go)]
-[![BCH compliance](https://bettercodehub.com/edge/badge/PawBud/CLText?branch=master)](https://bettercodehub.com/)(https://raw.githubusercontent.com/kkdai/consistent/master/LICENSE)
+[![BCH compliance](https://bettercodehub.com/edge/badge/PawBud/CLText?branch=master)](https://bettercodehub.com/)
 
 # What is CLText?
 
