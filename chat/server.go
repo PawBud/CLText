@@ -49,7 +49,7 @@ func (s *server) newClient(conn net.Conn) {
 	c.readInput()
 }
 
-func (s *server) nick(c *client, nick string) {
+func (_ *server) nick(c *client, nick string) {
 	c.nick = nick
 	c.msg(fmt.Sprintf("all right, I will call you %s", nick))
 }
@@ -82,7 +82,7 @@ func (s *server) listRooms(c *client) {
 	c.msg(fmt.Sprintf("available rooms: %s", strings.Join(rooms, ", ")))
 }
 
-func (s *server) msg(c *client, args []string) {
+func (_ *server) msg(c *client, args []string) {
 	msg := strings.Join(args[1:], " ")
 	c.room.broadcast(c, c.nick+": "+msg)
 }
@@ -93,10 +93,13 @@ func (s *server) quit(c *client) {
 	s.quitCurrentRoom(c)
 
 	c.msg("sad to see you go :(")
-	c.conn.Close()
+	err := c.conn.Close()
+	if err != nil {
+		return 
+	}
 }
 
-func (s *server) help(c *client){
+func (_ *server) help(c *client){
 	c.msg("the commands that can be used are: '/join', '/rooms', '/nick', '/msg' and '/quit'.")
 }
 
