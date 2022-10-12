@@ -50,7 +50,11 @@ func (s *server) newClient(conn net.Conn) {
 }
 
 func (s *server) nick(c *client, nick string) {
-	c.nick = nick
+	if nick != "" {
+		c.nick = nick
+	} else {
+		log.Printf("Bc error hogga\n")
+	}
 	c.msg(fmt.Sprintf("all right, I will call you %s", nick))
 }
 
