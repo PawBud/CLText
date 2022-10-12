@@ -15,6 +15,7 @@ func main() {
 	}
 
 	defer listener.Close()
+	log.Printf(" ===================== Welcome to CLText =====================\n")
 	log.Printf("Started a server on :8888")
 
 	for {
