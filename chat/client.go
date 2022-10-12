@@ -20,44 +20,47 @@ func (c *client) readInput() {
 		if err != nil {
 			return
 		}
-
 		msg = strings.Trim(msg, "\r\n")
-
 		args := strings.Split(msg, " ")
 		cmd := strings.TrimSpace(args[0])
-
+		//make sure that the length of the input is at least 1
+		if len(args) == 1 && args[0] != "/help" && args[0] != "/rooms" {
+			c.err(fmt.Errorf("Cannot pass empty characters after the commands except the help command.\n" +
+				"Example of a valid Command: /msg Once upon a time in a far far away galaxy" +
+				"\n"))
+		}
 		switch cmd {
 		case "/nick":
 			c.commands <- command{
-				id:     CMD_NICK,
+				id:     CmdNick,
 				client: c,
 				args:   args,
 			}
 		case "/join":
 			c.commands <- command{
-				id:     CMD_JOIN,
+				id:     CmdJoin,
 				client: c,
 				args:   args,
 			}
 		case "/rooms":
 			c.commands <- command{
-				id:     CMD_ROOMS,
+				id:     CmdRooms,
 				client: c,
 			}
 		case "/msg":
 			c.commands <- command{
-				id:     CMD_MSG,
+				id:     CmdMsg,
 				client: c,
 				args:   args,
 			}
 		case "/help":
 			c.commands <- command{
-				id:     CMD_HELP,
+				id:     CmdHelp,
 				client: c,
 			}
 		case "/quit":
 			c.commands <- command{
-				id:     CMD_QUIT,
+				id:     CmdQuit,
 				client: c,
 			}
 		default:
