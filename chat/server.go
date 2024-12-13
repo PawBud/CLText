@@ -22,19 +22,19 @@ func newServer() *server {
 func (s *server) run() {
 	for cmd := range s.commands {
 		switch cmd.id {
-		case CMD_NICK:
+		case CmdNick:
 			s.nick(cmd.client, cmd.args[1])
-		case CMD_JOIN:
+		case CmdJoin:
 			s.join(cmd.client, cmd.args[1])
-		case CMD_ROOMS:
+		case CmdRooms:
 			s.listRooms(cmd.client)
-		case CMD_MSG:
+		case CmdMsg:
 			s.msg(cmd.client, cmd.args)
-		case CMD_HELP:
+		case CmdHelp:
 			s.help(cmd.client)
-		case CMD_QUIT:
+		case CmdQuit:
 			s.quit(cmd.client)
-}
+		}
 	}
 }
 
@@ -49,8 +49,12 @@ func (s *server) newClient(conn net.Conn) {
 	c.readInput()
 }
 
-func (_ *server) nick(c *client, nick string) {
-	c.nick = nick
+func (s *server) nick(c *client, nick string) {
+	if nick != "" {
+		c.nick = nick
+	} else {
+		log.Printf("Bc error hogga\n")
+	}
 	c.msg(fmt.Sprintf("all right, I will call you %s", nick))
 }
 
@@ -99,7 +103,7 @@ func (s *server) quit(c *client) {
 	}
 }
 
-func (_ *server) help(c *client){
+func (s *server) help(c *client) {
 	c.msg("the commands that can be used are: '/join', '/rooms', '/nick', '/msg' and '/quit'.")
 }
 
