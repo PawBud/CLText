@@ -42,7 +42,7 @@ func (c *client) readInput() {
 
 func (c *client) readCommand(cmd string, args []string) {
 	log.Printf("command you entered: %s", cmd)
-	if cmd != "/randomnick" && cmd != "/nick" && cmd != "/help" && cmd != "/quit" {
+	if cmd != "/randomnick" && cmd != "/nick" && cmd != "/help" && cmd != "/quit" && c.nick == "anonymous" {
 		c.err(fmt.Errorf("pick a new nickname, otherwise enter /randomnick"))
 	} else {
 		switch cmd {

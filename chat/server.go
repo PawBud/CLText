@@ -48,8 +48,10 @@ func (s *server) newClient(conn net.Conn) {
 	c.msg(fmt.Sprintf("type '/help' to see the list of commands.\n"))
 	c.msg(fmt.Sprintf("type '/nick {nickname}' to assign a nickname to yourself.\n"))
 	c.msg(fmt.Sprintf("If you want to pick a random nickname, type /randomnick"))
-	// when a user creates a session, a nickname should be picked before
-	// doing anything else
+	
+	// // when a user creates a session, a nickname should be picked before
+	// // doing anything else
+	// new_session := true
 	c.readInput()
 }
 
