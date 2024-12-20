@@ -9,14 +9,18 @@ func main() {
 	s := newServer()
 	go s.run()
 
-	listener, err := net.Listen("tcp", ":8888")
+
+	// assign the port to a random available port instead of using a static port
+	listener, err := net.Listen("tcp", ":0")
+	addr := listener.Addr().String()
 	if err != nil {
 		log.Fatalf("unable to start server: %s", err.Error())
 	}
 
 	defer listener.Close()
 	log.Printf(" ===================== Welcome to CLText =====================\n")
-	log.Printf("Started a server on :8888")
+	log.Printf("This is the admin server")
+	log.Printf("Started a server on :%s", addr)
 
 	for {
 		conn, err := listener.Accept()
