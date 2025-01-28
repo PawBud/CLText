@@ -1,5 +1,6 @@
 go.mod
 .idea
+.vscode
 
 # This is the name I give to the binary generated
 ./chat/chat
